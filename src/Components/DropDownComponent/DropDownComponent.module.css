@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@100..900&display=swap");
+.PriceDropDown {
+  width: 382px;
+
+  height: 245px;
+}
+.InputFiels {
+  display: flex;
+  padding: 15px;
+  justify-content: space-evenly;
+  gap: 25%;
+}
+.InputFiels input {
+  border-radius: 5px;
+  width: 120px;
+  height: 35px;
+}
+.Header {
+  margin: 5%;
+}
+
+.boxShadow {
+  border: 1px solid black;
+  position: absolute;
+  border-radius: 5px;
+}
+.btn {
+  font-family: "Noto Serif Georgian", serif;
+  background-color: #f93b1d;
+  border-radius: 5px;
+  margin-left: 75%;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  height: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+.textArea {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 55px;
+}
