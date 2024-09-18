@@ -1,7 +1,11 @@
+import MainPage from "./Pages/MainPage";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import LayoutElement from "./Pages/LayoutElement";
+// import ListingAdd from "./Pages/ListingAdd";
+import ListingAdd from "./Pages/ListingAdd-0.2";
+
 const BASE_URL = "https://api.real-estate-manager.redberryinternship.ge/api";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function App() {
@@ -12,7 +16,7 @@ function App() {
     async function getrealestate() {
       try {
         // setLoading(true);
-        const response = await axios.get(`${BASE_URL}/cities`, {
+        const response = await axios.get(`${BASE_URL}/real-estates`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -29,14 +33,12 @@ function App() {
 
     getrealestate();
   }, []);
-
+  console.log(data);
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          index
-          element={<LayoutElement data={data} setData={setData} />}
-        />
+        <Route index element={<MainPage data={data} setData={setData} />} />
+        <Route path="listAdd" element={<ListingAdd />} />
         <Route path="Sales" element={<p>this is sales element</p>} />
         <Route path="Agents" element={<p>this is Agents element</p>} />
       </Routes>

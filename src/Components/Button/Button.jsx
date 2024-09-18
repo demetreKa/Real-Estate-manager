@@ -1,13 +1,14 @@
 /* eslint-disable react/prop-types */
 
 import styles from "./Button.module.css";
-function Button({ className, onClick, ButtonText }) {
+function Button({ className, onClick, ButtonText, RightEmoji, leftEmoji }) {
   return (
     <p
-      onClick={() => onClick()}
-      className={className ? className : styles.dropDown}
+      onClick={() => (onClick() ? onClick() : "")}
+      className={className ? className : styles.btn}
     >
-      {ButtonText} <i className="fa-solid fa-chevron-down"></i>
+      {leftEmoji ? <span>{leftEmoji} </span> : ""}
+      {ButtonText} {RightEmoji ? <span>{RightEmoji} </span> : " "}
     </p>
   );
 }

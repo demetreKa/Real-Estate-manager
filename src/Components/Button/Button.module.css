@@ -1,4 +1,7 @@
-.dropDown {
+.btn {
   cursor: pointer;
-  width: 250px;
+  padding: 10px;
+}
+span {
+  cursor: pointer;
 }

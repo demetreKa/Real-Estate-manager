@@ -1,0 +1,17 @@
+.conteiner {
+  margin-left: 20px;
+  text-align: center;
+  padding: 10px 16px;
+  margin-left: 533px;
+}
+
+.btn {
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  border: #f93b1d solid 1px;
+  background-color: #f93b1d;
+  width: 190px;
+  padding: 10px 16px;
+  cursor: pointer;
+}

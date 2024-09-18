@@ -2,25 +2,47 @@
 import Button from "../Button/Button";
 import styles from "./DropDownComponent.module.css";
 
-function Pricing({
+function DropDownComponent({
   header,
   MinProperty,
   MaxProperty,
   onClick,
   ButtonText,
   drop,
-  margin,
+  minName,
+  maxName,
+  action,
+  minVal,
+  maxVal,
+  filterActivation,
 }) {
   return (
-    <li style={{ marginLeft: margin }}>
-      <Button onClick={onClick} ButtonText={ButtonText} />
+    <li>
+      <Button
+        onClick={onClick}
+        ButtonText={ButtonText}
+        RightEmoji={<i className="fa-solid fa-chevron-down fa-sm"></i>}
+        className={styles.btndrop}
+      />
       {drop ? (
-        <div className={styles.boxShadow}>
+        <div className={styles.Conteiner}>
           <h4 className={styles.Header}>{header}</h4>
           <div className={styles.PriceDropDown}>
             <div className={styles.InputFiels}>
-              <input type="text" placeholder="დან" />
-              <input type="text" placeholder="მდე" />
+              <input
+                type="text"
+                placeholder="დან"
+                name={minName}
+                onChange={action}
+                value={minVal}
+              />
+              <input
+                type="text"
+                placeholder="მდე"
+                name={maxName}
+                onChange={action}
+                value={maxVal}
+              />
             </div>
 
             <div className={styles.textArea}>
@@ -43,7 +65,11 @@ function Pricing({
             </div>
           </div>
 
-          <button className={styles.btn}>არჩევა</button>
+          <div className="buttonToLeft">
+            <button className="btn" onClick={filterActivation}>
+              <span className="text">არჩევა</span>
+            </button>
+          </div>
         </div>
       ) : (
         ""
@@ -52,4 +78,4 @@ function Pricing({
   );
 }
 
-export default Pricing;
+export default DropDownComponent;

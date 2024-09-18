@@ -1,0 +1,24 @@
+.conteiner {
+  display: grid;
+  grid-template-columns: repeat(2, 384px);
+  width: 790px;
+  height: 190px;
+  gap: 20px;
+}
+label > input {
+  display: block;
+}
+.option {
+  width: 364px;
+  height: 14px;
+  border-radius: 6px;
+  border: 1px solid #808a93;
+  padding: 10px;
+}
+.selectOption {
+  width: 386px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #808a93;
+  padding: 10px;
+}

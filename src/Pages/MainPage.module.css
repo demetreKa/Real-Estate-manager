@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.conteiner {
+  margin: 50px;
+}
+:global(.btn) {
+  font-family: "Fira Sans", serif;
+  background-color: #f93b1d;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  height: 33px;
+  width: 77px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  gap: 2px;
+  font-weight: 700;
+}
+:global(.buttonToLeft) {
+  display: flex;
+  justify-content: end;
+}
+:global(.text) {
+  width: 49px;
+  height: 17px;
+  font-family: "Fira Sans";
+
+  size: 14px;
+  line-height: 16.8px;
+}

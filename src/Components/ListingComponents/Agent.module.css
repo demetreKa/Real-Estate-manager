@@ -1,0 +1,18 @@
+.conteiner {
+  width: 800px;
+}
+.selectorStyle {
+  display: block;
+  width: 386px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #808a93;
+  padding: 10px;
+}
+.selectOption {
+  width: 386px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid #808a93;
+  padding: 10px;
+}

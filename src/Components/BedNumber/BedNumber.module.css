@@ -1,0 +1,29 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 42px);
+  margin-top: 15px;
+}
+.conteiner {
+  position: absolute;
+  background-color: white;
+  text-align: center;
+  width: 282px;
+  height: 198px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.grid > span {
+  width: 41px;
+  height: 42px;
+  border: 1px solid #808a93;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button {
+  margin: 15px;
+}

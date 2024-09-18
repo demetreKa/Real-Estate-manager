@@ -1,4 +1,14 @@
 .gridDropDown {
   display: grid;
-  grid-template-columns: repeat(3, 150px);
+  grid-template-columns: repeat(3, 160px);
+  margin: 15px;
+}
+.conteiner {
+  position: absolute;
+  background-color: white;
+  z-index: 1;
+}
+.btn {
+  width: 70px;
+  height: 19px;
 }

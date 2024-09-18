@@ -1,0 +1,15 @@
+.conteiner {
+  margin-left: 20px;
+  text-align: center;
+  padding: 10px 16px;
+}
+.btn {
+  color: #f93b1d;
+  border-radius: 10px;
+  text-align: center;
+  border: #f93b1d solid 1px;
+
+  width: 190px;
+  padding: 10px 16px;
+  cursor: pointer;
+}
