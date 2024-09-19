@@ -1,9 +1,9 @@
-import TransactionType from "../Components/ListingComponents/TransactionType";
-import Location from "../Components/ListingComponents/Location";
+import TransactionType from "../Components/Listing/TransactionType";
+import Location from "../Components/Listing/Location";
 import Button from "../Components/Button/Button";
 import styles from "./ListingAdd.module.css";
-import HouseDetails from "../Components/ListingComponents/houseDetails";
-import Agent from "../Components/ListingComponents/Agent";
+import HouseDetails from "../Components/Listing/houseDetails";
+import Agent from "../Components/Listing/Agent";
 import axios from "axios";
 
 import { Link } from "react-router-dom";
@@ -11,42 +11,8 @@ import { useEffect, useState } from "react";
 const BASE_URL = "https://api.real-estate-manager.redberryinternship.ge/api";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function ListingAdd() {
-  async function handleSubmit(e) {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "https://api.real-estate-manager.redberryinternship.ge/api/real-estates",
-        formData
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   const [agents, setAgents] = useState([]);
-  useEffect(() => {
-    async function getAgents() {
-      try {
-        // setLoading(true);
-        const response = await axios.get(`${BASE_URL}/agents`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        setAgents(response.data);
-        // setLoading(false);
-      } catch (error) {
-        // setError(error);
-        // setLoading(false);
-        console.error(error);
-      }
-    }
-    getAgents();
-  }, []);
-
+  const [error, setError] = useState();
   const [formData, setformData] = useState({
     address: "",
     region_id: 1,
@@ -58,9 +24,49 @@ function ListingAdd() {
     bedrooms: "",
     is_rental: 0,
     agent_id: "",
-    image: "",
+    image: null,
   });
 
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "https://api.real-estate-manager.redberryinternship.ge/api/real-estates",
+        formData
+      );
+      console.log(response.data);
+    } catch (error) {
+      setError(error.response.data.errors);
+      console.error(error);
+    }
+  }
+
+  useEffect(() => {
+    async function getAgents() {
+      try {
+        // setLoading(true);
+        const response = await axios.get(`${BASE_URL}/agents`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setAgents(response.data);
+        setformData((prev) => ({
+          ...prev,
+          agent_id: response.data[0]?.id,
+        }));
+        // setLoading(false);
+      } catch (error) {
+        // setError(error);
+        // setLoading(false);
+        console.error(error);
+      }
+    }
+    getAgents();
+  }, []);
+  console.log(error);
   function HandleChange(e) {
     const { name, value } = e.target;
 
@@ -97,6 +103,8 @@ function ListingAdd() {
             setCity={HandleChange}
             region={formData.region_id}
             setRegion={HandleChange}
+            error={error}
+            setformData={setformData}
           />
         </section>
         <section>
@@ -111,6 +119,7 @@ function ListingAdd() {
             setDescription={HandleChange}
             setformData={setformData}
             image={formData.image}
+            error={error}
           />
         </section>
         <section>
@@ -125,7 +134,12 @@ function ListingAdd() {
             <Button ButtonText="გაუქმება" className={styles.btn} />{" "}
           </Link>
 
-          <input type="submit" className={styles.secBtn} />
+          <input
+            type="submit"
+            className={styles.secBtn}
+            placeholder="ლისტინგის დამატება"
+            value="ლისტინგის დამატება"
+          />
         </div>
       </form>
     </div>

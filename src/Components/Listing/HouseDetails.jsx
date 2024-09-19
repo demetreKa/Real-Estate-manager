@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import styles from "./houseDetails.module.css";
+import checkSing from "../icon/CheckSign.svg";
 import { useState, useRef, useEffect } from "react";
+import ErrorBox from "../ErrorBox/ErrorBox";
 function HouseDetails({
   price,
   handlepriceAdd,
@@ -11,6 +13,7 @@ function HouseDetails({
   description,
   setDescription,
   setformData,
+  error,
 }) {
   const [selectimage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
@@ -53,13 +56,13 @@ function HouseDetails({
       reader.readAsDataURL(file);
     }
   };
-
+  console.log(error?.price);
   return (
     <>
       <h3>ბინის დეტალები</h3>
       <form action="" className={styles.conteiner} onDrop={HandleDrop}>
         <label>
-          ფასი
+          ფასი*
           <input
             type="text"
             className={styles.option}
@@ -67,6 +70,14 @@ function HouseDetails({
             onChange={handlepriceAdd}
             name="price"
           />
+          {error?.price?.length > 0 ? (
+            <ErrorBox error={error.price} />
+          ) : (
+            <>
+              <img src={checkSing} alt="" />
+              <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
+            </>
+          )}
         </label>
         <label>
           ფართობი
@@ -77,9 +88,11 @@ function HouseDetails({
             value={width}
             onChange={HandleWidthAdd}
           />
+          <img src={checkSing} alt="" />
+          <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
         </label>
         <label>
-          საძინებლების რაოდენობა*
+          საძინებლების რაოდენობა
           <input
             type="text"
             className={styles.option}
@@ -87,6 +100,8 @@ function HouseDetails({
             value={bedNumber}
             onChange={HandleBedNumber}
           />
+          <img src={checkSing} alt="" />
+          <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
         </label>
       </form>
       <label htmlFor="">
@@ -99,8 +114,10 @@ function HouseDetails({
           value={description}
           onChange={setDescription}
         />
+        <img src={checkSing} alt="" />
+        <p className={styles.Pstyles}>მინიმუმ 5 სიტყვა</p>
       </label>
-      ატვირთეთ ფოტო*
+      <p>ატვირთეთ ფოტო* </p>
       <div
         onDrag={handleDragOver}
         onDrop={HandleDrop}

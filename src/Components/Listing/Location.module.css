@@ -22,3 +22,18 @@ label > input {
   border: 1px solid #808a93;
   padding: 10px;
 }
+.Pstyles {
+  font-family: "Fira Go";
+  display: inline;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+}
+.error {
+  border: 1px solid #f93b1d;
+  width: 364px;
+  height: 14px;
+  border-radius: 6px;
+
+  padding: 10px;
+}

@@ -56,3 +56,10 @@ label > input {
 .uploadImage {
   text-align: center;
 }
+.Pstyles {
+  font-family: "Fira Go";
+  display: inline;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+}
