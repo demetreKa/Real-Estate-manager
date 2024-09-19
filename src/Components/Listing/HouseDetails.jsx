@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import styles from "./houseDetails.module.css";
 import checkSing from "../icon/CheckSign.svg";
-import { useState, useRef, useEffect } from "react";
+import Bin from "../icon/Bin.svg";
+import { useState, useRef } from "react";
 import ErrorBox from "../ErrorBox/ErrorBox";
 function HouseDetails({
   price,
@@ -17,7 +18,6 @@ function HouseDetails({
 }) {
   const [selectimage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
-  useEffect(function () {}, [selectimage, setformData]);
 
   function handleDragOver(e) {
     e.preventDefault();
@@ -29,7 +29,11 @@ function HouseDetails({
 
     if (files.length > 0) {
       const file = files[0];
-      console.log(file);
+      setformData((prevData) => ({
+        ...prevData,
+        image: file,
+      }));
+
       const read = new FileReader();
       read.onload = (e) => {
         setSelectedImage(e.target.result);
@@ -43,7 +47,7 @@ function HouseDetails({
 
     setformData((prevData) => ({
       ...prevData,
-      image: file.name,
+      image: file,
     }));
 
     if (file) {
@@ -56,16 +60,20 @@ function HouseDetails({
       reader.readAsDataURL(file);
     }
   };
-  console.log(error?.price);
+  const handleDeleteImage = () => {
+    setSelectedImage(null);
+    setformData((prevData) => ({ ...prevData, image: "" }));
+  };
+
   return (
     <>
       <h3>ბინის დეტალები</h3>
       <form action="" className={styles.conteiner} onDrop={HandleDrop}>
         <label>
-          ფასი*
+          ფასი
           <input
             type="text"
-            className={styles.option}
+            className={error?.price?.length > 0 ? "error" : styles.option}
             value={price}
             onChange={handlepriceAdd}
             name="price"
@@ -84,24 +92,36 @@ function HouseDetails({
           <input
             type="text"
             name="area"
-            className={styles.option}
+            className={error?.area?.length > 0 ? "error" : styles.option}
             value={width}
             onChange={HandleWidthAdd}
           />
-          <img src={checkSing} alt="" />
-          <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
+          {error?.area?.length > 0 ? (
+            <ErrorBox error={error.area} />
+          ) : (
+            <>
+              <img src={checkSing} alt="" />
+              <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
+            </>
+          )}
         </label>
         <label>
           საძინებლების რაოდენობა
           <input
             type="text"
-            className={styles.option}
+            className={error?.bedrooms?.length > 0 ? "error" : styles.option}
             name="bedrooms"
             value={bedNumber}
             onChange={HandleBedNumber}
           />
-          <img src={checkSing} alt="" />
-          <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
+          {error?.bedrooms?.length > 0 ? (
+            <ErrorBox error={error.bedrooms} />
+          ) : (
+            <>
+              <img src={checkSing} alt="" />
+              <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
+            </>
+          )}
         </label>
       </form>
       <label htmlFor="">
@@ -110,12 +130,22 @@ function HouseDetails({
           name="description"
           rows="10"
           cols="30"
-          className={styles.TextArea}
+          className={
+            error?.description?.length > 0
+              ? styles.textAreaError
+              : styles.TextArea
+          }
           value={description}
           onChange={setDescription}
         />
-        <img src={checkSing} alt="" />
-        <p className={styles.Pstyles}>მინიმუმ 5 სიტყვა</p>
+        {error?.description?.length > 0 ? (
+          <ErrorBox error={error.description} />
+        ) : (
+          <>
+            <img src={checkSing} alt="" />
+            <p className={styles.Pstyles}>მინიმუმ 5 სიტყვა</p>
+          </>
+        )}
       </label>
       <p>ატვირთეთ ფოტო* </p>
       <div
@@ -127,24 +157,38 @@ function HouseDetails({
           <h1 className={styles.uploadImage}>
             {!selectimage ? <i className="fa-solid fa-plus fa-2x"></i> : ""}
           </h1>
-          <input
-            className={styles.fileUploader}
-            type="file"
-            accept="image/*"
-            name="image"
-            ref={fileInputRef}
-            onChange={handleImageChange}
-          />
+          {!selectimage ? (
+            <input
+              className={styles.fileUploader}
+              type="file"
+              accept="image/*"
+              name="image"
+              ref={fileInputRef}
+              onChange={handleImageChange}
+            />
+          ) : (
+            " "
+          )}
         </label>
+
         {selectimage && (
-          <img
-            name="image"
-            src={selectimage}
-            alt="uploaded Image"
-            className={styles.image}
-          />
+          <div className={styles.imageStyle}>
+            <img
+              name="image"
+              src={selectimage}
+              alt="uploaded Image"
+              className={styles.image}
+            />
+            <button
+              onClick={() => handleDeleteImage()}
+              className={styles.binButton}
+            >
+              <img src={Bin} alt="" />
+            </button>
+          </div>
         )}
       </div>
+      {error?.image?.length > 0 ? <ErrorBox error={error.image} /> : " "}
     </>
   );
 }

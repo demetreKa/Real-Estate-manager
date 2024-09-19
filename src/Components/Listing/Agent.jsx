@@ -1,9 +1,35 @@
 /* eslint-disable react/prop-types */
-// import { useEffect, useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Agent.module.css";
+const BASE_URL = "https://api.real-estate-manager.redberryinternship.ge/api";
+const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
+function Agent({ getAgents_id, hanldeAgentAdd }) {
+  const [agents, setAgents] = useState([]);
 
-function Agent({ agents, getAgents, hanldeAgentAdd }) {
+  useEffect(() => {
+    async function getAgents() {
+      try {
+        // setLoading(true);
+        const response = await axios.get(`${BASE_URL}/agents`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setAgents(response.data);
+
+        // setLoading(false);
+      } catch (error) {
+        // setError(error);
+        // setLoading(false);
+        console.error(error);
+      }
+    }
+    getAgents();
+  }, []);
+
   return (
     <>
       <form className={styles.conteiner}>
@@ -13,13 +39,12 @@ function Agent({ agents, getAgents, hanldeAgentAdd }) {
           აირჩიე
           <select
             name="agent_id"
-            id=""
             className={styles.selectorStyle}
-            value={getAgents}
+            value={getAgents_id}
             onChange={hanldeAgentAdd}
           >
             {agents.map((agent) => (
-              <option key={agent.id} value={agent.id}>
+              <option key={agent.name} value={agent.id}>
                 {agent.name}
               </option>
             ))}

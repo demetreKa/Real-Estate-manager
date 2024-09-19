@@ -65,9 +65,7 @@ function Location({
           <input
             type="text"
             name="address"
-            className={
-              error?.address?.length > 0 ? styles.error : styles.option
-            }
+            className={error?.address?.length > 0 ? "error" : styles.option}
             value={address}
             onChange={change}
           />
@@ -87,9 +85,7 @@ function Location({
           საფოსტო ინდექსი*
           <input
             type="text"
-            className={
-              error?.zip_code?.length > 0 ? styles.error : styles.option
-            }
+            className={error?.zip_code?.length > 0 ? "error" : styles.option}
             value={mailindex}
             onChange={setMailindex}
             name="zip_code"

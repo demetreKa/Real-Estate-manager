@@ -4,7 +4,7 @@ import CityList from "./CityList/CityList";
 import styles from "./NavPage.module.css";
 import DropDownComponent from "./DropDownComponent/DropDownComponent";
 import AddListing from "./ListingAddBTN/AddListingBTN";
-import AgentAdd from "./AgentAdd/AgentAdd";
+import AgentAdd from "./AgentAddBTN/AgentAdd";
 import BedNumber from "./BedNumber/BedNumber";
 
 function NavPage({
@@ -18,6 +18,7 @@ function NavPage({
   minArea,
   maxArea,
 }) {
+  const [agentdrop, setAgentdrop] = useState(false);
   const [widthDrop, setWidthdrop] = useState(false);
   const [priceDrop, setPricedrop] = useState(false);
   const [regiondrop, setRegiondrop] = useState(false);
@@ -91,7 +92,7 @@ function NavPage({
         />
         <BedNumber onbedDrop={handleBedDrop} drop={beddrop} />
         <AddListing />
-        <AgentAdd />
+        <AgentAdd agentdrop={agentdrop} setAgentdrop={setAgentdrop} />
       </ul>
     </div>
   );

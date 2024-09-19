@@ -1,0 +1,144 @@
+.conteiner {
+  display: grid;
+  grid-template-columns: repeat(1, 384px) minmax(384px, 384px);
+
+  gap: 20px;
+  padding: 15px;
+
+  justify-content: center;
+  align-items: flex-end;
+}
+label > input {
+  display: block;
+}
+.center > h1 {
+  font-family: "Fira Go";
+  font-weight: 900;
+  font-size: 32px;
+}
+.option {
+  width: 364px;
+  height: 14px;
+  border-radius: 6px;
+  border: 1px solid #808a93;
+  padding: 10px;
+}
+.TextArea {
+  width: 100%;
+  resize: none;
+}
+.lebleStyle {
+  height: 85px;
+}
+.inputStyle {
+  margin-bottom: 5%;
+}
+.HousePicture {
+  opacity: 0.75;
+  height: 250px;
+  width: 250px;
+
+  border: 1px dashed black;
+  width: 800px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.fileUploader {
+  /* make it invisible */
+
+  /* make it take the full height and width of the parent container */
+  width: 800px;
+  height: 200px;
+  cursor: pointer;
+  position: absolute;
+  /* make it absolute */
+  opacity: 0;
+  top: 46.2%;
+  left: 11%;
+}
+.image {
+  width: 30%;
+  height: 30%;
+}
+.uploadImage {
+  text-align: center;
+}
+
+.binButton {
+  position: absolute;
+  margin: 1% 0px 0px 12%;
+}
+.imageStyle {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.center {
+  text-align: -webkit-center;
+  width: 1004px;
+  height: 784px;
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 1;
+  left: 25%;
+}
+.pStyle {
+  text-align: start;
+  margin: 0;
+}
+
+.btnConteiner {
+  width: 800px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-top: 15%;
+}
+.btn {
+  font-family: "Fira go", serif;
+  border: 1px solid #f93b1d;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  height: 33px;
+  width: 77px;
+  color: #f93b1d;
+  font-weight: 500;
+
+  cursor: pointer;
+  font-size: 16px;
+  gap: 2px;
+  font-weight: 700;
+}
+.secBtn {
+  font-family: "Fira GO", serif;
+  background-color: #f93b1d;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  border: 1px solid #f93b1d;
+  align-items: center;
+  height: 49px;
+  margin-left: 15px;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  gap: 2px;
+  font-weight: 700;
+}

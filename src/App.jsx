@@ -3,15 +3,14 @@ import MainPage from "./Pages/MainPage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-// import ListingAdd from "./Pages/ListingAdd";
+
 import ListingAdd from "./Pages/ListingAdd-0.2";
 
 const BASE_URL = "https://api.real-estate-manager.redberryinternship.ge/api";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function App() {
   const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState();
+
   useEffect(() => {
     async function getrealestate() {
       try {
@@ -39,8 +38,6 @@ function App() {
       <Routes>
         <Route index element={<MainPage data={data} setData={setData} />} />
         <Route path="listAdd" element={<ListingAdd />} />
-        <Route path="Sales" element={<p>this is sales element</p>} />
-        <Route path="Agents" element={<p>this is Agents element</p>} />
       </Routes>
     </BrowserRouter>
   );

@@ -19,6 +19,18 @@ label > input {
   width: 100%;
   resize: none;
 }
+.textAreaError {
+  width: 100%;
+  border: 1px solid #f93b1d;
+  resize: none;
+}
+.Pstyles {
+  font-family: "Fira Go";
+  display: inline;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+}
 
 .HousePicture {
   opacity: 0.75;
@@ -46,7 +58,7 @@ label > input {
   position: absolute;
   /* make it absolute */
   opacity: 0;
-  top: 74.6%;
+  top: 76.6%;
   left: 29%;
 }
 .image {
@@ -56,10 +68,13 @@ label > input {
 .uploadImage {
   text-align: center;
 }
-.Pstyles {
-  font-family: "Fira Go";
-  display: inline;
-  font-size: 14px;
-  line-height: 16.8px;
-  font-weight: 400;
+
+.binButton {
+  position: absolute;
+  margin: 1% 0px 0px 12%;
+}
+.imageStyle {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
