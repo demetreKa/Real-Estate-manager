@@ -3,7 +3,9 @@ import { useState } from "react";
 import NavPage from "../Components/NavPage";
 import styles from "./MainPage.module.css";
 import LayoutList from "../Components/Layout/LayoutList";
-function MainPage({ data, setHouseid, }) {
+import AgentAddForm from "../Components/AgentAddForm/AgentAddForm";
+function MainPage({ data, setHouseid }) {
+  const [agentdrop, setAgentdrop] = useState(false);
   const [selectedRegions, setSelectedRegions] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(Infinity);
@@ -71,26 +73,35 @@ function MainPage({ data, setHouseid, }) {
     : data;
 
   return (
-    <div className={styles.conteiner}>
-      <NavPage
-        data={data}
-        handleRegionChange={handleRegionChange}
-        selectedRegions={selectedRegions}
-        handleChange={handleChange}
-        minPirce={minPrice}
-        maxPrice={maxPrice}
-        minArea={minArea}
-        maxArea={maxArea}
-        setFilteractive={handlefilterClick}
-        numberOfBeds={numberOfBeds}
-        setNumberOFbeds={setNumberOFbeds}
-      />
-      {filteredCities.length !== 0 ? (
-        <LayoutList data={filteredCities} setHouseid={setHouseid} />
+    <>
+      <div className={agentdrop ? styles.diactivated : styles.conteiner}>
+        <NavPage
+          data={data}
+          handleRegionChange={handleRegionChange}
+          selectedRegions={selectedRegions}
+          handleChange={handleChange}
+          minPirce={minPrice}
+          maxPrice={maxPrice}
+          minArea={minArea}
+          maxArea={maxArea}
+          setFilteractive={handlefilterClick}
+          numberOfBeds={numberOfBeds}
+          setNumberOFbeds={setNumberOFbeds}
+          agentdrop={agentdrop}
+          setAgentdrop={setAgentdrop}
+        />
+        {filteredCities.length !== 0 ? (
+          <LayoutList data={filteredCities} setHouseid={setHouseid} />
+        ) : (
+          "აღნიშნული მონაცემებით განცხადება არ მოგიძებნება"
+        )}
+      </div>
+      {agentdrop ? (
+        <AgentAddForm setAgentdrop={setAgentdrop} agentdrop={agentdrop} />
       ) : (
-        "აღნიშნული მონაცემებით განცხადება არ მოგიძებნება"
+        " "
       )}
-    </div>
+    </>
   );
 }
 

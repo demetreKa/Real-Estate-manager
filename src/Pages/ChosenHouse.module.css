@@ -105,3 +105,8 @@
 
   cursor: pointer;
 }
+.diactivated {
+  padding: 15px;
+  filter: blur(8px);
+  pointer-events: none;
+}

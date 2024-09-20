@@ -20,8 +20,9 @@ function NavPage({
   numberOfBeds,
   setNumberOFbeds,
   showCard,
+  agentdrop,
+  setAgentdrop,
 }) {
-  const [agentdrop, setAgentdrop] = useState(false);
   const [widthDrop, setWidthdrop] = useState(false);
   const [priceDrop, setPricedrop] = useState(false);
   const [regiondrop, setRegiondrop] = useState(false);
@@ -55,69 +56,71 @@ function NavPage({
   }
 
   return (
-    <div className={styles.nav}>
-      <h1 className={styles.Logo}>REDBERRY</h1>
+    <>
+      <div className={styles.nav}>
+        <h1 className={styles.Logo}>REDBERRY</h1>
 
-      <ul>
-        <CityList
-          city={data}
-          onRegionChange={handleRegionChange}
-          selectedRegions={selectedRegions}
-          handleRegionDrop={handleRegionDrop}
-          regionDrop={regiondrop}
-          onClick={setFilteractive}
-          showCard={showCard}
-          setRegiondrop={setRegiondrop}
-        />
+        <ul>
+          <CityList
+            city={data}
+            onRegionChange={handleRegionChange}
+            selectedRegions={selectedRegions}
+            handleRegionDrop={handleRegionDrop}
+            regionDrop={regiondrop}
+            onClick={setFilteractive}
+            showCard={showCard}
+            setRegiondrop={setRegiondrop}
+          />
 
-        <DropDownComponent
-          header={"ფასის მიხედვით"}
-          MinProperty={"მინ. ფასი"}
-          MaxProperty={"მაქს. ფასი"}
-          ButtonText={"საფასო კატეგორია"}
-          onClick={handleWidthDrop}
-          setDrop={setWidthdrop}
-          drop={widthDrop}
-          minName={"minPrice"}
-          maxName={"maxPrice"}
-          action={handleChange}
-          minVal={minPirce}
-          maxVal={maxPrice}
-          filterActivation={setFilteractive}
-          showCard={showCard}
-          style={"PriceDrop"}
-        />
-        <DropDownComponent
-          header={"ფართობის მიხედვით"}
-          MinProperty={`მინ. ფართი`}
-          MaxProperty={"მაქს. ფართი"}
-          ButtonText={"ფართობი"}
-          onClick={HandlePriceDown}
-          drop={priceDrop}
-          minName={"minArea"}
-          maxName={"maxArea"}
-          setDrop={setPricedrop}
-          action={handleChange}
-          minVal={minArea}
-          maxVal={maxArea}
-          filterActivation={setFilteractive}
-          showCard={showCard}
-          style={"AreaDrop"}
-        />
+          <DropDownComponent
+            header={"ფასის მიხედვით"}
+            MinProperty={"მინ. ფასი"}
+            MaxProperty={"მაქს. ფასი"}
+            ButtonText={"საფასო კატეგორია"}
+            onClick={handleWidthDrop}
+            setDrop={setWidthdrop}
+            drop={widthDrop}
+            minName={"minPrice"}
+            maxName={"maxPrice"}
+            action={handleChange}
+            minVal={minPirce}
+            maxVal={maxPrice}
+            filterActivation={setFilteractive}
+            showCard={showCard}
+            style={"PriceDrop"}
+          />
+          <DropDownComponent
+            header={"ფართობის მიხედვით"}
+            MinProperty={`მინ. ფართი`}
+            MaxProperty={"მაქს. ფართი"}
+            ButtonText={"ფართობი"}
+            onClick={HandlePriceDown}
+            drop={priceDrop}
+            minName={"minArea"}
+            maxName={"maxArea"}
+            setDrop={setPricedrop}
+            action={handleChange}
+            minVal={minArea}
+            maxVal={maxArea}
+            filterActivation={setFilteractive}
+            showCard={showCard}
+            style={"AreaDrop"}
+          />
 
-        <BedNumber
-          onbedDrop={handleBedDrop}
-          setBeddrop={setBeddrop}
-          drop={beddrop}
-          numberOfBeds={numberOfBeds}
-          setNumberOFbeds={setNumberOFbeds}
-          filterActivation={setFilteractive}
-          showCard={showCard}
-        />
-        <AddListing />
-        <AgentAddBTN agentdrop={agentdrop} setAgentdrop={setAgentdrop} />
-      </ul>
-    </div>
+          <BedNumber
+            onbedDrop={handleBedDrop}
+            setBeddrop={setBeddrop}
+            drop={beddrop}
+            numberOfBeds={numberOfBeds}
+            setNumberOFbeds={setNumberOFbeds}
+            filterActivation={setFilteractive}
+            showCard={showCard}
+          />
+          <AddListing />
+          <AgentAddBTN agentdrop={agentdrop} setAgentdrop={setAgentdrop} />
+        </ul>
+      </div>
+    </>
   );
 }
 

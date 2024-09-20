@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import Button from "../Button/Button";
 import styles from "./AgentAdd.module.css";
-import AgentAddForm from "../AgentAddForm/AgentAddForm.jsx";
-function AgentAdd({ setAgentdrop, agentdrop }) {
+function AgentAdd({ setAgentdrop }) {
   function handleDrop() {
     setAgentdrop((stat) => !stat);
   }
@@ -16,8 +15,6 @@ function AgentAdd({ setAgentdrop, agentdrop }) {
           onClick={handleDrop}
         />
       </div>
-
-      {agentdrop ? <AgentAddForm setAgentdrop={setAgentdrop} agentdrop={agentdrop} /> : " "}
     </>
   );
 }
