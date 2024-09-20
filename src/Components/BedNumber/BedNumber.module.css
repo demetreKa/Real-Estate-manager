@@ -15,7 +15,20 @@
   z-index: 1;
 }
 
-.grid > span {
+.inactive {
+  width: 41px;
+  height: 42px;
+  border: 1px solid black;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+button {
+  margin: 15px;
+}
+.actvie {
   width: 41px;
   height: 42px;
   border: 1px solid #808a93;
@@ -23,7 +36,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-button {
-  margin: 15px;
+  cursor: pointer;
 }

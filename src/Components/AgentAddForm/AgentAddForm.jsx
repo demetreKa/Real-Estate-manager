@@ -1,11 +1,14 @@
+/* eslint-disable react/prop-types */
 import styles from "./AgentAddForm.module.css";
 import Bin from "../icon/Bin.svg";
+import CheckSing from "../icon/CheckSign.svg";
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
+import ErrorBox from "../ErrorBox/ErrorBox";
 import axios from "axios";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
-function AgentAddForm() {
+function AgentAddForm({ setAgentdrop, agentdrop }) {
   const [selectimage, setSelectedImage] = useState(null);
   const fileInputRef = useRef(null);
   const [error, setError] = useState();
@@ -49,13 +52,30 @@ function AgentAddForm() {
     } catch (error) {
       setError(error.response.data.errors);
       console.error(error);
+      console.log(error);
     }
   }
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (agentdrop && !event.target.closest(`.${styles.center} `)) {
+        setAgentdrop(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [agentdrop, setAgentdrop]);
+
   function handleDragOver(e) {
+    console.log(e);
     e.preventDefault();
     e.dataTransfer.dropEffect = "copy";
   }
   function HandleDrop(e) {
+    console.log(e);
     e.preventDefault();
     const files = e.dataTransfer.files;
 
@@ -75,6 +95,7 @@ function AgentAddForm() {
   }
 
   const handleImageChange = (event) => {
+    console.log(event);
     const file = event.target.files[0];
     setAgentsForm((prev) => ({
       ...prev,
@@ -90,16 +111,14 @@ function AgentAddForm() {
       reader.readAsDataURL(file);
     }
   };
-  const handleClick = () => {
-    fileInputRef.current.click();
-  };
+
   const handleDeleteImage = () => {
     setSelectedImage(null);
     setAgentsForm((prevData) => ({ ...prevData, avatar: "" }));
   };
 
   return (
-    <form className={styles.center} onClick={handleSubmit}>
+    <form className={styles.center}>
       <h1>აგენტის დამატება</h1>
       <div className={styles.conteiner}>
         <label className={styles.lebleStyle}>
@@ -107,10 +126,18 @@ function AgentAddForm() {
           <input
             type="text"
             name="name"
-            className={styles.option}
+            className={error?.name?.length > 0 ? "error" : styles.option}
             value={agentsForm.name}
             onChange={hanldeChange}
           />
+          {error?.name?.length > 0 ? (
+            <ErrorBox error={error.name} />
+          ) : (
+            <>
+              <img src={CheckSing} alt="" />
+              <p className={styles.Pstyles}>მინიმუმ ორი სიმბოლო</p>
+            </>
+          )}
         </label>
 
         <label className={styles.lebleStyle}>
@@ -118,10 +145,18 @@ function AgentAddForm() {
           <input
             type="text"
             name="surname"
-            className={styles.option}
+            className={error?.surname?.length > 0 ? "error" : styles.option}
             value={agentsForm.surname}
             onChange={hanldeChange}
           />
+          {error?.surname?.length > 0 ? (
+            <ErrorBox error={error.surname} />
+          ) : (
+            <>
+              <img src={CheckSing} alt="" />
+              <p className={styles.Pstyles}>მინიმუმ ორი სიმბოლო</p>
+            </>
+          )}
         </label>
 
         <label className={styles.lebleStyle}>
@@ -131,8 +166,16 @@ function AgentAddForm() {
             name="email"
             value={agentsForm.email}
             onChange={hanldeChange}
-            className={styles.option}
+            className={error?.email?.length > 0 ? "error" : styles.option}
           />
+          {error?.email?.length > 0 > 0 ? (
+            <ErrorBox error={error.email} />
+          ) : (
+            <>
+              <img src={CheckSing} alt="" />
+              <p className={styles.Pstyles}>გამოიყენეთ @redberry.ge ფოსტა</p>
+            </>
+          )}
         </label>
 
         <label className={styles.lebleStyle}>
@@ -142,8 +185,16 @@ function AgentAddForm() {
             name="phone"
             value={agentsForm.phone}
             onChange={hanldeChange}
-            className={styles.option}
+            className={error?.phone?.length > 0 ? "error" : styles.option}
           />
+          {error?.phone?.length > 0 ? (
+            <ErrorBox error={error.phone} />
+          ) : (
+            <>
+              <img src={CheckSing} alt="" />
+              <p className={styles.Pstyles}>მხოლოდ რიცხვები</p>
+            </>
+          )}
         </label>
         <div className={styles.inputStyle}>
           <p className={styles.pStyle}>ატვირთეთ ფოტო* </p>
@@ -164,7 +215,6 @@ function AgentAddForm() {
                   name="avatar"
                   ref={fileInputRef}
                   onChange={handleImageChange}
-                  onClick={handleClick}
                 />
               ) : (
                 " "
@@ -187,7 +237,11 @@ function AgentAddForm() {
           </div>
           <div className={styles.btnConteiner}>
             <Link to="/">
-              <Button ButtonText="გაუქმება" className={styles.btn} />{" "}
+              <Button
+                ButtonText="გაუქმება"
+                className={styles.btn}
+                onClick={() => setAgentdrop(false)}
+              />{" "}
             </Link>
 
             <input
@@ -195,6 +249,7 @@ function AgentAddForm() {
               className={styles.secBtn}
               placeholder="ლისტინგის დამატება"
               value="დამატება აგენტი"
+              onClick={handleSubmit}
             />
           </div>
         </div>

@@ -52,7 +52,7 @@ function ListingAdd() {
     },
     [sendData]
   );
-  console.log(sendData);
+
   async function handleSubmit(e) {
     e.preventDefault();
 

@@ -142,3 +142,10 @@ label > input {
   gap: 2px;
   font-weight: 700;
 }
+.Pstyles {
+  font-family: "Fira Go";
+  display: inline;
+  font-size: 14px;
+  line-height: 16.8px;
+  font-weight: 400;
+}

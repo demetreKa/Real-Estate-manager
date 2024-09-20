@@ -1,0 +1,107 @@
+* {
+  padding: 0;
+  margin: 0;
+  display: flexbox;
+}
+.conteiner {
+  display: flex;
+  justify-content: center;
+}
+.mainImage {
+  width: 839px;
+  height: 670px;
+  gap: 10px;
+  border-radius: 10px;
+}
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  width: 503px;
+  height: 714px;
+  padding: 30px 0 0 0;
+  gap: 40px;
+  margin-left: 70px;
+}
+.forImage {
+  width: 72px;
+  height: 72px;
+  border-radius: 100px;
+}
+.agentProfile {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+.pStyle {
+  font-family: "Fira Go";
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28.8px;
+  color: #808a93;
+  padding: 10px;
+}
+.header {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 57.6px;
+}
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  color: #808a93;
+  padding: 10px;
+}
+.agentpStyle {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16.8px;
+  color: #808a93;
+  padding-left: 20px;
+}
+.padding {
+  padding: 15px;
+}
+.agentProfile > span {
+  padding: 15px;
+}
+.btn {
+  width: 131px;
+  height: 34px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14.4px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #676e76;
+  cursor: pointer;
+  margin: 0;
+  margin-top: 20px;
+}
+.margin {
+  margin-top: 20px;
+}
+.agentContacnts {
+  padding-right: 5px;
+}
+.sold {
+  position: absolute;
+  margin: 15px;
+  background-color: #02152680;
+  padding: 6px;
+  border-radius: 15px;
+  gap: 10px;
+  color: white;
+  width: 90px;
+  height: 20px;
+  text-align: center;
+}
+.pStyle > img {
+  padding-right: 8px;
+}
+.BackBtn {
+  width: 21.33px;
+  height: 21.33px;
+
+  cursor: pointer;
+}

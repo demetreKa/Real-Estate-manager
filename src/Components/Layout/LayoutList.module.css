@@ -2,3 +2,6 @@
   display: grid;
   grid-template-columns: minmax(384px, 1fr) repeat(3, 1fr);
 }
+a {
+  all: unset;
+}

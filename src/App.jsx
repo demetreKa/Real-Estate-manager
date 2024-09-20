@@ -1,16 +1,16 @@
 import MainPage from "./Pages/MainPage";
+import ListingAdd from "./Pages/ListingAdd-0.2";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-import ListingAdd from "./Pages/ListingAdd-0.2";
+import ChosenHouse from "./Pages/ChosenHouse";
 
 const BASE_URL = "https://api.real-estate-manager.redberryinternship.ge/api";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function App() {
   const [data, setData] = useState([]);
-
+  const [houseid, setHouseid] = useState();
   useEffect(() => {
     async function getrealestate() {
       try {
@@ -36,8 +36,19 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<MainPage data={data} setData={setData} />} />
+        <Route
+          index
+          element={
+            <MainPage
+              data={data}
+              setData={setData}
+              setHouseid={setHouseid}
+              houseid={houseid}
+            />
+          }
+        />
         <Route path="listAdd" element={<ListingAdd />} />
+        <Route path="chosenHouse" element={<ChosenHouse houseid={houseid} />} />
       </Routes>
     </BrowserRouter>
   );

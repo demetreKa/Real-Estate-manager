@@ -10,3 +10,7 @@
 .Logo {
   font-size: 3rem;
 }
+.backgroundDisable {
+  background-color: rgba(0, 0, 0, 0.4);
+  filter: blur(8px);
+}

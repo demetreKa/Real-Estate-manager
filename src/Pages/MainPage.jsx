@@ -3,13 +3,13 @@ import { useState } from "react";
 import NavPage from "../Components/NavPage";
 import styles from "./MainPage.module.css";
 import LayoutList from "../Components/Layout/LayoutList";
-function MainPage({ data }) {
+function MainPage({ data, setHouseid, }) {
   const [selectedRegions, setSelectedRegions] = useState([]);
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(Infinity);
   const [minArea, setMinArea] = useState(0);
   const [maxArea, setMaxArea] = useState(Infinity);
-  // const [numberOfBeds, setNumberOFbeds] = useState(10);
+  const [numberOfBeds, setNumberOFbeds] = useState(0);
   const [filteractive, setFilteractive] = useState(false);
   const handleRegionChange = (regionId) => {
     const isChecked = selectedRegions.includes(regionId);
@@ -46,11 +46,16 @@ function MainPage({ data }) {
   function handlefilterClick() {
     setFilteractive(true);
   }
+
   const filteredCities = filteractive
     ? data.filter((cityitem) => {
         if (minPrice === 0 && maxPrice === 0) {
           return;
         } else {
+          const bedsinRange =
+            cityitem.bedrooms >= numberOfBeds &&
+            cityitem.bedrooms <= numberOfBeds;
+          console.log(cityitem.bedrooms == numberOfBeds);
           const priceWithinRange =
             cityitem.price >= minPrice && cityitem.price <= maxPrice;
           const widthWithinRange =
@@ -58,7 +63,9 @@ function MainPage({ data }) {
           const regionMatches =
             selectedRegions.length === 0 ||
             selectedRegions.includes(cityitem.city.region_id);
-          return priceWithinRange && regionMatches && widthWithinRange;
+          return (
+            priceWithinRange && regionMatches && widthWithinRange && bedsinRange
+          );
         }
       })
     : data;
@@ -75,9 +82,11 @@ function MainPage({ data }) {
         minArea={minArea}
         maxArea={maxArea}
         setFilteractive={handlefilterClick}
+        numberOfBeds={numberOfBeds}
+        setNumberOFbeds={setNumberOFbeds}
       />
       {filteredCities.length !== 0 ? (
-        <LayoutList data={filteredCities} />
+        <LayoutList data={filteredCities} setHouseid={setHouseid} />
       ) : (
         "აღნიშნული მონაცემებით განცხადება არ მოგიძებნება"
       )}

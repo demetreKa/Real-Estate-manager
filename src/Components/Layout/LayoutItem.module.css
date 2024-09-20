@@ -5,6 +5,7 @@ span {
 }
 .main {
   padding: 15px;
+  cursor: pointer;
 }
 .grayColor {
   color: #02152680;
@@ -25,11 +26,11 @@ span {
 .svgImg {
   height: 24px;
   width: 24px;
-  color: #71717108;
 }
 .center {
   display: flex;
   align-items: center;
+  gap: 32px;
 }
 .imageConteiner {
   width: 100%;
@@ -55,8 +56,8 @@ span {
   text-align: center;
 }
 .conteiner {
-  display: flexbox;
   align-items: center;
+  padding: 20px;
 }
 .textConteiner {
   padding: 10px;
@@ -71,4 +72,15 @@ span {
   font-weight: 700;
   font-size: 28px;
   line-height: 33.6px;
+}
+.decoration {
+  display: flex;
+  gap: 5px;
+}
+.price {
+  padding-bottom: 15px;
+}
+.address {
+  display: flex;
+  gap: 5px;
 }

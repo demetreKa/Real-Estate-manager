@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Button from "../Button/Button";
 import styles from "./DropDownComponent.module.css";
-
+import { useEffect } from "react";
 function DropDownComponent({
   header,
   MinProperty,
@@ -15,9 +15,24 @@ function DropDownComponent({
   minVal,
   maxVal,
   filterActivation,
+  style,
+  setDrop,
 }) {
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (drop && !event.target.closest(`.${style}`)) {
+        setDrop(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [drop, setDrop, style]);
   return (
-    <li>
+    <div className={style}>
       <Button
         onClick={onClick}
         ButtonText={ButtonText}
@@ -74,7 +89,7 @@ function DropDownComponent({
       ) : (
         ""
       )}
-    </li>
+    </div>
   );
 }
 

@@ -3,34 +3,37 @@ import styles from "./LayoutItem.module.css";
 import bed from "../icon/bed.svg";
 import vector from "../icon/vector.svg";
 import roadIcon from "../icon/roadicon.svg";
-function LayoutItem({ house }) {
+import location from "../icon/location.svg";
+function LayoutItem({ house, setHouseid }) {
   return (
-    <span className={styles.main}>
+    <span className={styles.main} onClick={() => setHouseid(house.id)}>
       <p className={styles.sold}>
         {house.is_rental <= 0 ? "იყიდება" : "ქირავდება"}
       </p>
       <img src={house.image} alt="" className={styles.imageConteiner} />
       <div className={styles.conteiner}>
-        <p className={styles.houseAddress}>{house.price}</p>
-        <div>
-          <span>
+        <div className={styles.price}>
+          <p className={styles.houseAddress}>{house.price}</p>
+          <span className={styles.address}>
             {" "}
-            <i
-              className={`fa-solid fa-location-dot fa-sm ${styles.grayColor}`}
-            ></i>
+            <img src={location} alt="" />
             <span>{house.address}</span>
           </span>
         </div>
         <div>
           <span className={styles.center}>
-            <img src={bed} alt="" className={styles.svgImg} />
-            {house.bedrooms}
-
-            <img src={vector} alt="" />
-            {house.area}
-
-            <img src={roadIcon} alt="" />
-            {house.zip_code}
+            <span className={styles.decoration}>
+              <img src={bed} alt="" className={styles.svgImg} />
+              <p>{house.bedrooms}</p>
+            </span>
+            <span className={styles.decoration}>
+              <img src={vector} alt="" className={styles.svgImg} />
+              <p>{house.area}მ&sup2;</p>
+            </span>
+            <span className={styles.decoration}>
+              <img src={roadIcon} alt="" className={styles.svgImg} />
+              <p>{house.zip_code}</p>
+            </span>
           </span>
         </div>
       </div>

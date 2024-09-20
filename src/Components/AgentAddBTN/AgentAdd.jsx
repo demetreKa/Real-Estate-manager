@@ -17,7 +17,7 @@ function AgentAdd({ setAgentdrop, agentdrop }) {
         />
       </div>
 
-      {agentdrop ? <AgentAddForm /> : " "}
+      {agentdrop ? <AgentAddForm setAgentdrop={setAgentdrop} agentdrop={agentdrop} /> : " "}
     </>
   );
 }

@@ -11,6 +11,7 @@ function CityList({
   handleRegionDrop,
   regionDrop,
   onClick,
+  setRegiondrop,
 }) {
   const [region, setRegion] = useState([]);
   useEffect(() => {
@@ -34,8 +35,21 @@ function CityList({
 
     getrealestate();
   }, []);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (regionDrop && !event.target.closest(`.${styles.licode} `)) {
+        setRegiondrop(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [regionDrop, setRegiondrop]);
   return (
-    <li>
+    <div className={styles.licode}>
       <Button
         onClick={handleRegionDrop}
         ButtonText={"რეგიონი"}
@@ -67,7 +81,7 @@ function CityList({
       ) : (
         " "
       )}
-    </li>
+    </div>
   );
 }
 
