@@ -2,8 +2,8 @@
 import styles from "./LayoutItem.module.css";
 import bed from "../icon/bed.svg";
 import vector from "../icon/vector.svg";
-import roadIcon from "../icon/roadicon.svg";
-import location from "../icon/location.svg";
+import roadIcon from "../icon/roadIcon.svg";
+import location from "../icon/Mimartuleba.svg";
 
 function LayoutItem({ house, setHouseid }) {
   const numberFormat = (value) => new Intl.NumberFormat("fr-FR").format(value);
