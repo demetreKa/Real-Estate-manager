@@ -24,7 +24,6 @@ function Location({
   useEffect(() => {
     async function getcity() {
       try {
-        // setLoading(true);
         const response = await axios.get(`${BASE_URL}/cities`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -46,15 +45,12 @@ function Location({
           ...prev,
           region_id: `${response2.data[0].id}`,
         }));
-        // setLoading(false);
       } catch (error) {
-        // setError(error);
-        // setLoading(false);
         console.error(error);
       }
     }
     getcity();
-  }, []);
+  }, [setformData]);
 
   return (
     <>

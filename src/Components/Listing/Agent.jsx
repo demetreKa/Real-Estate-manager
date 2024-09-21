@@ -11,7 +11,6 @@ function Agent({ getAgents_id, hanldeAgentAdd }) {
   useEffect(() => {
     async function getAgents() {
       try {
-        // setLoading(true);
         const response = await axios.get(`${BASE_URL}/agents`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -19,11 +18,7 @@ function Agent({ getAgents_id, hanldeAgentAdd }) {
         });
 
         setAgents(response.data);
-
-        // setLoading(false);
       } catch (error) {
-        // setError(error);
-        // setLoading(false);
         console.error(error);
       }
     }

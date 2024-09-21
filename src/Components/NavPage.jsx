@@ -115,6 +115,7 @@ function NavPage({
             setNumberOFbeds={setNumberOFbeds}
             filterActivation={setFilteractive}
             showCard={showCard}
+            handleChange={handleChange}
           />
           <AddListing />
           <AgentAddBTN agentdrop={agentdrop} setAgentdrop={setAgentdrop} />

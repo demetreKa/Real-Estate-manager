@@ -7,18 +7,17 @@ import Email from "../Components/icon/Email.svg";
 import Phone from "../Components/icon/Phone.svg";
 import BackBtn from "../Components/icon/BackBtn.svg";
 import REDBERRY from "../Components/icon/logo.svg";
-
 import axios from "axios";
-import { useEffect, useState } from "react";
-
-import styles from "./ChosenHouse.module.css";
-import { Link } from "react-router-dom";
 import DeleteCard from "../Components/DeleteCard/DeleteCard";
 import Carusel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import LayoutItem from "../Components/Layout/LayoutItem";
+import { useEffect, useState } from "react";
+import styles from "./ChosenHouse.module.css";
+import { Link } from "react-router-dom";
 
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
+
 function ChosenHouse({ houseid, houses, setHouseid }) {
   const [ChousenHouse, setChousenHouse] = useState({});
   const [popCard, setPopCard] = useState(false);
@@ -34,16 +33,13 @@ function ChosenHouse({ houseid, houses, setHouseid }) {
       )
       .then((response) => {
         console.log("Response:", response);
-        // Handle successful response
       })
       .catch((error) => {
         console.error("Error:", error);
-        // Handle error
       });
   }
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },

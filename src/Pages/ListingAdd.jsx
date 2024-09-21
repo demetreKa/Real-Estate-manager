@@ -73,7 +73,6 @@ function ListingAdd() {
     }
   }
 
-  console.log(error);
   function HandleChange(e) {
     const { name, value } = e.target;
 

@@ -5,10 +5,10 @@ import styles from "./BedNumber.module.css";
 function BedNumber({
   onbedDrop,
   drop,
-  setNumberOFbeds,
   filterActivation,
   setBeddrop,
   numberOfBeds,
+  handleChange,
 }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,41 +35,12 @@ function BedNumber({
         <div className={styles.conteiner}>
           <h3>საძინებლების რაოდენობა</h3>
           <div className={styles.grid}>
-            <button
-              value="1"
-              onClick={(e) => setNumberOFbeds(e.target.value)}
-              className={numberOfBeds === "1" ? styles.actvie : styles.inactive}
-            >
-              1
-            </button>
-            <button
-              value="2"
-              onClick={(e) => setNumberOFbeds(e.target.value)}
-              className={numberOfBeds === "2" ? styles.actvie : styles.inactive}
-            >
-              2
-            </button>
-            <button
-              value="3"
-              onClick={(e) => setNumberOFbeds(e.target.value)}
-              className={numberOfBeds === "3" ? styles.actvie : styles.inactive}
-            >
-              3
-            </button>
-            <button
-              value="4"
-              onClick={(e) => setNumberOFbeds(e.target.value)}
-              className={numberOfBeds === "4" ? styles.actvie : styles.inactive}
-            >
-              4
-            </button>
-            <button
-              value="5"
-              onClick={(e) => setNumberOFbeds(e.target.value)}
-              className={numberOfBeds === "5" ? styles.actvie : styles.inactive}
-            >
-              5
-            </button>
+            <input
+              type="text"
+              name="bedrooms"
+              onChange={handleChange}
+              value={numberOfBeds}
+            />
           </div>
           <div className="buttonToLeft">
             <button className="btn">

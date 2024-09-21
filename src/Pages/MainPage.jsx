@@ -34,7 +34,10 @@ function MainPage({ data, setHouseid }) {
       setMinArea(parseFloat(value) || 0);
     } else if (name === "maxArea") {
       setMaxArea(parseFloat(value) || 0);
+    } else if (name === "bedrooms") {
+      setNumberOFbeds(parseInt(value) || 0);
     }
+    console.log(name);
   }
   function handlefilterClick() {
     setFilteractive(true);
