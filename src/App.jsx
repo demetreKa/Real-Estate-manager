@@ -1,5 +1,5 @@
 import MainPage from "./Pages/MainPage";
-import ListingAdd from "./Pages/ListingAdd-0.2";
+import ListingAdd from "./Pages/ListingAdd";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect, useState } from "react";

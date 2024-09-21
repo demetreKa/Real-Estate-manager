@@ -13,6 +13,7 @@ function MainPage({ data, setHouseid }) {
   const [maxArea, setMaxArea] = useState(Infinity);
   const [numberOfBeds, setNumberOFbeds] = useState(0);
   const [filteractive, setFilteractive] = useState(false);
+
   const handleRegionChange = (regionId) => {
     const isChecked = selectedRegions.includes(regionId);
 
@@ -51,24 +52,22 @@ function MainPage({ data, setHouseid }) {
 
   const filteredCities = filteractive
     ? data.filter((cityitem) => {
-        if (minPrice === 0 && maxPrice === 0) {
-          return;
-        } else {
-          const bedsinRange =
-            cityitem.bedrooms >= numberOfBeds &&
-            cityitem.bedrooms <= numberOfBeds;
-          console.log(cityitem.bedrooms == numberOfBeds);
-          const priceWithinRange =
-            cityitem.price >= minPrice && cityitem.price <= maxPrice;
-          const widthWithinRange =
-            cityitem.area >= minArea && cityitem.area <= maxArea;
-          const regionMatches =
-            selectedRegions.length === 0 ||
-            selectedRegions.includes(cityitem.city.region_id);
-          return (
-            priceWithinRange && regionMatches && widthWithinRange && bedsinRange
-          );
-        }
+        console.log(cityitem.price, cityitem.area, cityitem.bedrooms);
+        const bedsinRange =
+          cityitem.bedrooms >= numberOfBeds &&
+          cityitem.bedrooms <= numberOfBeds;
+        console.log(cityitem.bedrooms == numberOfBeds);
+        const priceWithinRange =
+          minPrice >= cityitem && cityitem.price <= maxPrice;
+        const widthWithinRange =
+          cityitem.area >= minArea && cityitem.area <= maxArea;
+        const regionMatches =
+          selectedRegions.length === 0 ||
+          selectedRegions.includes(cityitem.city.region_id);
+
+        return (
+          priceWithinRange && regionMatches && widthWithinRange && bedsinRange
+        );
       })
     : data;
 
@@ -80,7 +79,7 @@ function MainPage({ data, setHouseid }) {
           handleRegionChange={handleRegionChange}
           selectedRegions={selectedRegions}
           handleChange={handleChange}
-          minPirce={minPrice}
+          minPrice={minPrice}
           maxPrice={maxPrice}
           minArea={minArea}
           maxArea={maxArea}
@@ -91,7 +90,16 @@ function MainPage({ data, setHouseid }) {
           setAgentdrop={setAgentdrop}
         />
         {filteredCities.length !== 0 ? (
-          <LayoutList data={filteredCities} setHouseid={setHouseid} />
+          <LayoutList
+            data={filteredCities}
+            setHouseid={setHouseid}
+            minArea={minArea}
+            maxArea={maxArea}
+            minPrice={minPrice}
+            maxPrice={maxPrice}
+            bedrooms={numberOfBeds}
+            filteractive={filteractive}
+          />
         ) : (
           "აღნიშნული მონაცემებით განცხადება არ მოგიძებნება"
         )}

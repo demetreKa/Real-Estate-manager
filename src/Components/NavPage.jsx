@@ -12,7 +12,7 @@ function NavPage({
   handleRegionChange,
   selectedRegions,
   handleChange,
-  minPirce,
+  minPrice,
   maxPrice,
   setFilteractive,
   minArea,
@@ -83,7 +83,7 @@ function NavPage({
             minName={"minPrice"}
             maxName={"maxPrice"}
             action={handleChange}
-            minVal={minPirce}
+            minVal={minPrice}
             maxVal={maxPrice}
             filterActivation={setFilteractive}
             showCard={showCard}

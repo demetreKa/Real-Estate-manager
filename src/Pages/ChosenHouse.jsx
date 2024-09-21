@@ -6,6 +6,7 @@ import roadSign from "../Components/icon/roadSign.svg";
 import Email from "../Components/icon/Email.svg";
 import Phone from "../Components/icon/Phone.svg";
 import BackBtn from "../Components/icon/BackBtn.svg";
+import REDBERRY from "../Components/icon/logo.svg";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
@@ -59,10 +60,10 @@ function ChosenHouse({ houseid }) {
   return (
     <>
       <div className={popCard ? styles.diactivated : styles.padding}>
-        <p>REDBERRY</p>
+        <img src={REDBERRY} alt="" />
         <span className={styles.BackBtn}>
           <Link to="/">
-            <img src={BackBtn} alt="" />
+            <img src={BackBtn} alt="" className={styles.logo} />
           </Link>
         </span>
         <div>
