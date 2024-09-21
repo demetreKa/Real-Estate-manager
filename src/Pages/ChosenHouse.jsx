@@ -165,7 +165,7 @@ function ChosenHouse({ houseid, houses, setHouseid }) {
           </div>
         </div>
         <h3>ბინები მსგავს ლოკაციაზე</h3>
-        <Carusel responsive={responsive}>
+        <Carusel responsive={responsive} infinite={true}>
           {houses
             .filter(
               (house) =>

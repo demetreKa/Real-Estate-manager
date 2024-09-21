@@ -68,7 +68,7 @@ function DropDownComponent({
                 <button
                   className={styles.chose}
                   onClick={(e) => onEvent(Number(e.target.value))}
-                  value="50000"
+                  value={50000}
                 >
                   50000
                 </button>
