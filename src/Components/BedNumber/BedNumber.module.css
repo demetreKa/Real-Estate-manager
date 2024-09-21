@@ -1,5 +1,11 @@
 .grid {
   margin-top: 15px;
+  width: 41px;
+  height: 42px;
+  border-radius: 6px;
+  border: 1px;
+  padding: 10px;
+  text-align: center;
 }
 .conteiner {
   position: absolute;

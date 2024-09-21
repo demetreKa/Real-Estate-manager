@@ -34,16 +34,17 @@ function BedNumber({
       {drop ? (
         <div className={styles.conteiner}>
           <h3>საძინებლების რაოდენობა</h3>
-          <div className={styles.grid}>
-            <input
-              type="text"
-              name="bedrooms"
-              onChange={handleChange}
-              value={numberOfBeds}
-            />
-          </div>
+
+          <input
+            type="text"
+            name="bedrooms"
+            onChange={handleChange}
+            value={numberOfBeds}
+            className={styles.grid}
+          />
+
           <div className="buttonToLeft">
-            <button className="btn">
+            <button className="btn" onClick={() => setBeddrop(false)}>
               <span className="text" onClick={filterActivation}>
                 არჩევა
               </span>

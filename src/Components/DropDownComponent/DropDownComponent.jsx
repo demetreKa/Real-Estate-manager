@@ -144,7 +144,9 @@ function DropDownComponent({
 
           <div className="buttonToLeft">
             <button className="btn" onClick={filterActivation}>
-              <span className="text">არჩევა</span>
+              <span className="text" onClick={() => setDrop(false)}>
+                არჩევა
+              </span>
             </button>
           </div>
         </div>

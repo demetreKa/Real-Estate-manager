@@ -72,7 +72,7 @@ function CityList({
             ))}
           </div>
           <div className="buttonToLeft">
-            <button className="btn">
+            <button className="btn" onClickCapture={() => handleRegionDrop()}>
               <span className="text" onClick={onClick}>
                 არჩევა
               </span>
