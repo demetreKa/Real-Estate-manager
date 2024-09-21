@@ -19,6 +19,7 @@ function Location({
   error,
   setformData,
 }) {
+  console.log(error);
   const [cities, setCities] = useState([]);
   const [regions, setRegions] = useState([]);
   useEffect(() => {
@@ -124,6 +125,7 @@ function Location({
               </option>
             ))}
           </select>
+          {error?.city_id?.length > 0 ? <ErrorBox error={error.city_id} /> : ""}
         </label>
       </form>
     </>

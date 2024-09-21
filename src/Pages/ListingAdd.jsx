@@ -6,11 +6,12 @@ import HouseDetails from "../Components/Listing/houseDetails";
 import Agent from "../Components/Listing/Agent";
 import axios from "axios";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function ListingAdd() {
   const [error, setError] = useState();
+  const navigate = useNavigate();
   const sendData = new FormData();
   const [formData, setformData] = useState(() => {
     const storedData = localStorage.getItem("fromData");
@@ -66,7 +67,11 @@ function ListingAdd() {
           },
         }
       );
+      console.log(response);
       console.log(response.data);
+      if (!response.data.errors) {
+        navigate("/");
+      }
     } catch (error) {
       setError(error.response.data.errors);
       console.error(error);
@@ -124,7 +129,7 @@ function ListingAdd() {
       </section>
       <div className={styles.btnConteiner}>
         <Link to="/">
-          <Button ButtonText="გაუქმება" className={styles.btn} />{" "}
+          <Button ButtonText="გაუქმება" className={styles.btn} onClick={""} />{" "}
         </Link>
 
         <input
