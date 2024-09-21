@@ -17,6 +17,8 @@ function DropDownComponent({
   filterActivation,
   style,
   setDrop,
+  onEvent,
+  onMaxEvent,
 }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -63,19 +65,79 @@ function DropDownComponent({
             <div className={styles.textArea}>
               <div>
                 <span>{MinProperty}</span>
-                <p>50000</p>
-                <p>100000</p>
-                <p>150000</p>
-                <p>200000</p>
-                <p>250000</p>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onEvent(Number(e.target.value))}
+                  value="50000"
+                >
+                  50000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onEvent(Number(e.target.value))}
+                  value={100000}
+                >
+                  100000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onEvent(Number(e.target.value))}
+                  value={150000}
+                >
+                  150000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onEvent(Number(e.target.value))}
+                  value={200000}
+                >
+                  200000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onEvent(Number(e.target.value))}
+                  value={250000}
+                >
+                  250000
+                </button>
               </div>
               <div>
-                <span>{MaxProperty}</span>
-                <p>50000</p>
-                <p>100000</p>
-                <p>150000</p>
-                <p>200000</p>
-                <p>250000</p>
+                <p className={styles.chose}>{MaxProperty}</p>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onMaxEvent(Number(e.target.value))}
+                  value="50000"
+                >
+                  50000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onMaxEvent(Number(e.target.value))}
+                  value={100000}
+                >
+                  100000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onMaxEvent(Number(e.target.value))}
+                  value={150000}
+                >
+                  150000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onMaxEvent(Number(e.target.value))}
+                  value={200000}
+                >
+                  200000
+                </button>
+                <button
+                  className={styles.chose}
+                  onClick={(e) => onMaxEvent(Number(e.target.value))}
+                  value={250000}
+                >
+                  250000
+                </button>
               </div>
             </div>
           </div>

@@ -41,3 +41,8 @@
 li {
   margin: 5px;
 }
+.chose {
+  display: block;
+  cursor: pointer;
+  border: none;
+}

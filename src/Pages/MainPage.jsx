@@ -93,6 +93,10 @@ function MainPage({ data, setHouseid }) {
           setNumberOFbeds={setNumberOFbeds}
           agentdrop={agentdrop}
           setAgentdrop={setAgentdrop}
+          setMaxPrice={setMaxPrice}
+          setMinPrice={setMinPrice}
+          setMaxArea={setMaxArea}
+          setMinArea={setMinArea}
         />
         {filteredData.length !== 0 ? (
           <LayoutList

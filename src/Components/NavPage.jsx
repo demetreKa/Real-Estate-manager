@@ -22,6 +22,10 @@ function NavPage({
   showCard,
   agentdrop,
   setAgentdrop,
+  setMaxPrice,
+  setMinPrice,
+  setMaxArea,
+  setMinArea,
 }) {
   const [widthDrop, setWidthdrop] = useState(false);
   const [priceDrop, setPricedrop] = useState(false);
@@ -88,6 +92,8 @@ function NavPage({
             filterActivation={setFilteractive}
             showCard={showCard}
             style={"PriceDrop"}
+            onEvent={setMinPrice}
+            onMaxEvent={setMaxPrice}
           />
           <DropDownComponent
             header={"ფართობის მიხედვით"}
@@ -105,6 +111,8 @@ function NavPage({
             filterActivation={setFilteractive}
             showCard={showCard}
             style={"AreaDrop"}
+            onEvent={setMinArea}
+            onMaxEvent={setMaxArea}
           />
 
           <BedNumber

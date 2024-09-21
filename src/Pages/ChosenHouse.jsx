@@ -15,7 +15,7 @@ import LayoutItem from "../Components/Layout/LayoutItem";
 import { useEffect, useState } from "react";
 import styles from "./ChosenHouse.module.css";
 import { Link } from "react-router-dom";
-
+import Time from "react-time-format";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 
 function ChosenHouse({ houseid, houses, setHouseid }) {
@@ -77,6 +77,8 @@ function ChosenHouse({ houseid, houses, setHouseid }) {
     },
     [houseid]
   );
+  const numberFormat = (value) => new Intl.NumberFormat("fr-FR").format(value);
+  console.log(Date.now());
   return (
     <>
       <div className={popCard ? styles.diactivated : styles.padding}>
@@ -97,12 +99,22 @@ function ChosenHouse({ houseid, houses, setHouseid }) {
                 alt=""
                 className={styles.mainImage}
               />
-              <p>{ChousenHouse.created_at}</p>
+
+              <span className={styles.time}>
+                <p className={styles.timeText}>გამოქვეყნების თარიღი</p>
+                <Time
+                  value={ChousenHouse.created_at}
+                  format="YYYY-MM-DD"
+                  className={styles.timeText}
+                />
+              </span>
             </div>
 
             <div className={styles.infoContainer}>
               <div>
-                <h1 className={styles.header}>{ChousenHouse.price}</h1>
+                <h1 className={styles.header}>
+                  {numberFormat(ChousenHouse.price)}
+                </h1>
                 <p className={styles.pStyle}>
                   <img src={location} alt="" />
                   {ChousenHouse.address}
