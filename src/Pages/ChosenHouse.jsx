@@ -7,13 +7,19 @@ import Email from "../Components/icon/Email.svg";
 import Phone from "../Components/icon/Phone.svg";
 import BackBtn from "../Components/icon/BackBtn.svg";
 import REDBERRY from "../Components/icon/logo.svg";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
-const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
+
 import styles from "./ChosenHouse.module.css";
 import { Link } from "react-router-dom";
 import DeleteCard from "../Components/DeleteCard/DeleteCard";
-function ChosenHouse({ houseid }) {
+import Carusel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import LayoutItem from "../Components/Layout/LayoutItem";
+
+const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
+function ChosenHouse({ houseid, houses, setHouseid }) {
   const [ChousenHouse, setChousenHouse] = useState({});
   const [popCard, setPopCard] = useState(false);
   async function deleteEstate() {
@@ -35,7 +41,25 @@ function ChosenHouse({ houseid }) {
         // Handle error
       });
   }
-
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   useEffect(
     function () {
       async function getRealestateById() {
@@ -60,10 +84,10 @@ function ChosenHouse({ houseid }) {
   return (
     <>
       <div className={popCard ? styles.diactivated : styles.padding}>
-        <img src={REDBERRY} alt="" />
+        <img src={REDBERRY} alt="" className={styles.logo} />
         <span className={styles.BackBtn}>
           <Link to="/">
-            <img src={BackBtn} alt="" className={styles.logo} />
+            <img src={BackBtn} alt="" className={styles.BackBtn} />
           </Link>
         </span>
         <div>
@@ -133,6 +157,19 @@ function ChosenHouse({ houseid }) {
           </div>
         </div>
         <h3>ბინები მსგავს ლოკაციაზე</h3>
+        <Carusel responsive={responsive}>
+          {houses
+            .filter(
+              (house) =>
+                house.id !== ChousenHouse.id &&
+                house.address === ChousenHouse.address
+            )
+            .map((item) => (
+              <div key={item.id}>
+                <LayoutItem house={item} setHouseid={setHouseid} />
+              </div>
+            ))}
+        </Carusel>
       </div>
       {popCard && (
         <DeleteCard

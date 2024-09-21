@@ -10,7 +10,16 @@ const BASE_URL = "https://api.real-estate-manager.redberryinternship.ge/api";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function App() {
   const [data, setData] = useState([]);
-  const [houseid, setHouseid] = useState();
+  const [houseid, setHouseid] = useState(() => {
+    const storedData = localStorage.getItem("houseId");
+    return storedData ? JSON.parse(storedData) : " ";
+  });
+  useEffect(function () {
+    localStorage.setItem("houseId", JSON.stringify(houseid));
+    return () => {
+      localStorage.clear();
+    };
+  });
   useEffect(() => {
     async function getrealestate() {
       try {
@@ -48,7 +57,16 @@ function App() {
           }
         />
         <Route path="listAdd" element={<ListingAdd />} />
-        <Route path="chosenHouse" element={<ChosenHouse houseid={houseid} />} />
+        <Route
+          path="chosenHouse"
+          element={
+            <ChosenHouse
+              houseid={houseid}
+              houses={data}
+              setHouseid={setHouseid}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

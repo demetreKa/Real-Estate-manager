@@ -196,6 +196,7 @@ function AgentAddForm({ setAgentdrop, agentdrop }) {
             </>
           )}
         </label>
+
         <div className={styles.inputStyle}>
           <p className={styles.pStyle}>ატვირთეთ ფოტო* </p>
           <div
@@ -203,38 +204,45 @@ function AgentAddForm({ setAgentdrop, agentdrop }) {
             onDrop={HandleDrop}
             className={styles.HousePicture}
           >
-            <label>
-              <h1 className={styles.uploadImage}>
-                {!selectimage ? <i className="fa-solid fa-plus fa-2x"></i> : ""}
-              </h1>
-              {!selectimage ? (
-                <input
-                  className={styles.fileUploader}
-                  type="file"
-                  accept="image/*"
-                  name="avatar"
-                  ref={fileInputRef}
-                  onChange={handleImageChange}
-                />
-              ) : (
-                " "
-              )}
-            </label>
+            <>
+              <label>
+                <h1 className={styles.uploadImage}>
+                  {!selectimage ? (
+                    <i className="fa-solid fa-plus fa-2x"></i>
+                  ) : (
+                    ""
+                  )}
+                </h1>
+                {!selectimage ? (
+                  <input
+                    className={styles.fileUploader}
+                    type="file"
+                    accept="image/*"
+                    name="avatar"
+                    ref={fileInputRef}
+                    onChange={handleImageChange}
+                  />
+                ) : (
+                  " "
+                )}
+              </label>
 
-            {selectimage && (
-              <div className={styles.imageStyle}>
-                <img
-                  name="avatar"
-                  src={selectimage}
-                  alt="uploaded Image"
-                  className={styles.image}
-                />
-                <button className={styles.binButton}>
-                  <img src={Bin} alt="" onClick={handleDeleteImage} />
-                </button>
-              </div>
-            )}
+              {selectimage && (
+                <div className={styles.imageStyle}>
+                  <img
+                    name="avatar"
+                    src={selectimage}
+                    alt="uploaded Image"
+                    className={styles.image}
+                  />
+                  <button className={styles.binButton}>
+                    <img src={Bin} alt="" onClick={handleDeleteImage} />
+                  </button>
+                </div>
+              )}
+            </>
           </div>
+          {error?.avatar?.length > 0 ? <ErrorBox error={error.avatar} /> : " "}
           <div className={styles.btnConteiner}>
             <Link to="/">
               <Button

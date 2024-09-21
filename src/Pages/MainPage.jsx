@@ -35,42 +35,44 @@ function MainPage({ data, setHouseid }) {
     } else if (name === "maxArea") {
       setMaxArea(parseFloat(value) || 0);
     }
-    if (
-      maxPrice === 0 ||
-      (minPrice > maxPrice && maxPrice === Infinity) ||
-      minPrice === 0 ||
-      maxArea === 0 ||
-      minArea > maxArea ||
-      minArea === 0
-    ) {
-      setFilteractive(false);
-    }
   }
   function handlefilterClick() {
     setFilteractive(true);
   }
 
-  const filteredCities = filteractive
-    ? data.filter((cityitem) => {
-        console.log(cityitem.price, cityitem.area, cityitem.bedrooms);
-        const bedsinRange =
-          cityitem.bedrooms >= numberOfBeds &&
-          cityitem.bedrooms <= numberOfBeds;
-        console.log(cityitem.bedrooms == numberOfBeds);
-        const priceWithinRange =
-          minPrice >= cityitem && cityitem.price <= maxPrice;
-        const widthWithinRange =
-          cityitem.area >= minArea && cityitem.area <= maxArea;
-        const regionMatches =
-          selectedRegions.length === 0 ||
-          selectedRegions.includes(cityitem.city.region_id);
+  const filteredData = filteractive
+    ? data.filter((item) => {
+        if (minPrice !== 0 && !priceWithinRange(item.price)) {
+          return false;
+        }
 
-        return (
-          priceWithinRange && regionMatches && widthWithinRange && bedsinRange
-        );
+        if (minArea !== 0 && !areaWithinRange(item.area)) {
+          return false;
+        }
+
+        if (numberOfBeds !== 0 && !bedsinRange(item.bedrooms)) {
+          return false;
+        }
+
+        return regionMatches(item.city.region_id);
       })
     : data;
 
+  function priceWithinRange(price) {
+    return minPrice <= price && maxPrice >= price;
+  }
+
+  function areaWithinRange(area) {
+    return minArea <= area && maxArea >= area;
+  }
+
+  function bedsinRange(bedrooms) {
+    return numberOfBeds <= bedrooms && bedrooms <= numberOfBeds;
+  }
+
+  function regionMatches(regionId) {
+    return selectedRegions.length === 0 || selectedRegions.includes(regionId);
+  }
   return (
     <>
       <div className={agentdrop ? styles.diactivated : styles.conteiner}>
@@ -89,9 +91,9 @@ function MainPage({ data, setHouseid }) {
           agentdrop={agentdrop}
           setAgentdrop={setAgentdrop}
         />
-        {filteredCities.length !== 0 ? (
+        {filteredData.length !== 0 ? (
           <LayoutList
-            data={filteredCities}
+            data={filteredData}
             setHouseid={setHouseid}
             minArea={minArea}
             maxArea={maxArea}

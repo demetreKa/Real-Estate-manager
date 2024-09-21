@@ -6,7 +6,7 @@ import DropDownComponent from "./DropDownComponent/DropDownComponent";
 import AddListing from "./ListingAddBTN/AddListingBTN";
 import AgentAddBTN from "./AgentAddBTN/AgentAdd";
 import BedNumber from "./BedNumber/BedNumber";
-
+import Logo from "./icon/Logo.svg";
 function NavPage({
   data,
   handleRegionChange,
@@ -58,7 +58,7 @@ function NavPage({
   return (
     <>
       <div className={styles.nav}>
-        <h1 className={styles.Logo}>REDBERRY</h1>
+        <img src={Logo} className={styles.Logo} />
 
         <ul>
           <CityList

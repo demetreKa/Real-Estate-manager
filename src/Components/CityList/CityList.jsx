@@ -65,7 +65,7 @@ function CityList({
                   value={region.id}
                   checked={selectedRegions.includes(region.id)}
                   onChange={() => onRegionChange(region.id)}
-                  id="checkbox"
+                  id={styles.checkbox}
                 />
                 <label htmlFor={region.id}>{region.name}</label>
               </div>

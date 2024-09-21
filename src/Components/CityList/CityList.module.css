@@ -16,5 +16,8 @@
   background-color: none;
 }
 #checkbox {
-  color: green;
+  accent-color: green;
+}
+#checkbox[type="checkbox"] {
+  background-color: green;
 }
