@@ -10,6 +10,7 @@ import axios from "axios";
 const token = "9cfc7fe8-0798-4b21-be5e-28fef3ebd98d";
 function AgentAddForm({ setAgentdrop, agentdrop }) {
   const [selectimage, setSelectedImage] = useState(null);
+
   const fileInputRef = useRef(null);
   const [error, setError] = useState();
   const [agentsForm, setAgentsForm] = useState({
@@ -19,7 +20,7 @@ function AgentAddForm({ setAgentdrop, agentdrop }) {
     phone: "",
     avatar: "",
   });
-  console.log(error);
+
   const AgentData = new FormData();
   useEffect(function () {
     AgentData.append("name", agentsForm.name);
@@ -48,7 +49,10 @@ function AgentAddForm({ setAgentdrop, agentdrop }) {
           },
         }
       );
-      console.log(response.data);
+
+      if (!response.data.errors) {
+        setAgentdrop(false);
+      }
     } catch (error) {
       setError(error.response.data.errors);
       console.error(error);
