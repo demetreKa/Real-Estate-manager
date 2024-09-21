@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import styles from "./houseDetails.module.css";
+import styles from "./HouseDetails.module.css";
 import checkSing from "../icon/CheckSign.svg";
 import Bin from "../icon/Bin.svg";
 import { useState, useRef } from "react";

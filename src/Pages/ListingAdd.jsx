@@ -2,7 +2,8 @@ import TransactionType from "../Components/Listing/TransactionType";
 import Location from "../Components/Listing/Location";
 import Button from "../Components/Button/Button";
 import styles from "./ListingAdd.module.css";
-import HouseDetails from "../Components/Listing/houseDetails";
+
+import HouseDetails from "../Components/Listing/HouseDetails";
 import Agent from "../Components/Listing/Agent";
 import axios from "axios";
 
